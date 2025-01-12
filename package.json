@@ -1,0 +1,36 @@
+{
+  "name": "devpage",
+  "version": "1.0.0",
+  "description": "An static portfolio web generator",
+  "keywords": [
+    "devpage",
+    "staticweb",
+    "portfolio"
+  ],
+  "homepage": "https://github.com/daneedev/DevPage#readme",
+  "bugs": {
+    "url": "https://github.com/daneedev/DevPage/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daneedev/DevPage.git"
+  },
+  "license": "ISC",
+  "author": "Danee",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node-dev src/index.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.5",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.7.3"
+  },
+  "dependencies": {
+    "inquirer": "^12.3.1",
+    "tailwindcss": "^3.4.17"
+  }
+}
