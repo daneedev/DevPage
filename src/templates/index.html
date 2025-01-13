@@ -3,10 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="./css/style.css"/>
     <title>{{ username }}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script src="./js/tooltip.js"></script>
 </head>
-<body class="h-full min-h-screen bg-home bg-cover">
-    
+<body class="h-screen bg-home bg-cover flex flex-col justify-between font-poppins">
+    <nav class="">
+        <ul class="flex justify-center items-center bg-[#161b21] p-[10px] w-screen">
+            <li class="mx-[10px]"><a href="#about" class="text-white">About</a></li>
+            <li class="mx-[10px]"><a href="#projects" class="text-white">Projects</a></li>
+            <li class="mx-[10px]"><a href="#contact" class="text-white">Contact</a></li>
+        </ul>
+    </nav>
+    <main class="flex flex-col justify-center items-center">
+        <article class="flex flex-col justify-center items-center bg-[#161b21] p-[20px] rounded-2xl max-w-[500px]">
+            <h1 class="text-4xl text-white font-bold">I'm {{ username }}</h1>
+            <p class="text-gray-500">{{ job }}</p>
+            <section class="flex flex-col justify-center items-center gap-5">
+                <div class="flex flex-col justify-center gap-5 space-x-2 bg-[#2d3237] p-[10px] rounded-2xl max-w-[500px]">
+                    <p class="text-[#8b8d90]">About me</p>
+                    <p class="text-white">{{ about }}</p>
+                </div>
+                <section class="flex flex-row justify-center items-center gap-5">
+                    <div class="flex flex-col justify-center gap-5 space-x-2 bg-[#2d3237] p-[10px] rounded-2xl">
+                        <p class="text-[#8b8d90]">Languages</p>
+                        <div class="flex flex-row justify-center items-center gap-5 flex-wrap">
+                            {% for tech in languages %}
+                            <img src="{{ tech.icon }}" class="w-8 h-8" alt={{ tech.name }} />
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="flex flex-col justify-center gap-5 space-x-2 bg-[#2d3237] p-[10px] rounded-2xl">
+                        <p class="text-[#8b8d90]">Frameworks</p>
+                        <div class="flex flex-row justify-center items-center gap-5 flex-wrap">
+                            {% for tech in frameworks %}
+                            <img src="{{ tech.icon }}" class="w-8 h-8" alt={{ tech.name }} />
+                            {% endfor %}
+                        </div>
+                    </div>
+                </section>
+            </section>
+        </article>
+    </main>
+    <footer class="flex flex-col items-center justify-center bg-[#161b21] p-[10px] w-screen text-white">
+        <p class="text-center">&copy; 2025 {{ username }} All rights reserved.</p>
+        <p class="text-center">Made by <a class="font-bold" href="https://github.com/daneedev/DevPage">DevPage</a></p>
+    </footer>
+
 </body>
 </html>
