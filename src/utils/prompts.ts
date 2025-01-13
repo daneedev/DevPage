@@ -1,18 +1,5 @@
 import inquier from 'inquirer';
 
-async function getCssChoice() {
-  const cssChoice = await inquier.prompt({
-    type: 'list',
-    name: 'cssChoice',
-    message: 'Pick a type of TailwindCSS generation',
-    choices: [
-        { name: "Locally (Recommended for selfhost)", value: "local" },
-        { name: "CDN (Recommended for GitHub Pages)", value: "cdn" },
-    ],
-  });
-  return cssChoice.cssChoice;
-}
-
 async function getColors() : Promise<{color1: string, color2: string}> {
   const color1 = await inquier.prompt({
     type: 'input',
@@ -33,4 +20,47 @@ async function getColors() : Promise<{color1: string, color2: string}> {
   }
 }
 
-export default { getCssChoice, getColors };
+async function getUserInfo() {
+  const user = await inquier.prompt([{
+    type: 'input',
+    name: 'username',
+    message: 'Enter your username',
+  },
+  {
+    type: 'input',
+    name: 'job',
+    message: 'Enter your job title',
+  },
+  {
+    type: 'input',
+    name: 'languages',
+    message: 'Enter languages that you use (comma separated)',
+  },
+  {
+    type: "input",
+    name: "frameworks",
+    message: 'Enter frameworks that you use (comma separated)',
+  },
+  {
+    type: 'input',
+    name: 'about',
+    message: 'Enter a short description about yourself',
+  }
+])
+ /* const job = await inquier.prompt({
+    type: 'input',
+    name: 'data',
+    message: 'Enter your job title',
+  })*/
+
+
+  return {
+    username: user.username,
+    job: user.job,
+    languages: user.languages,
+    frameworks: user.frameworks,
+    about: user.about,
+  }
+}
+
+export default { getColors, getUserInfo };
