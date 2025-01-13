@@ -2,10 +2,15 @@
 module.exports = {
   content: ["./src/**/*.{html,js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
-    backgroundImage: theme => ({
-      'home': "url('/public/img/background.svg')",
-    }),
+    extend: {
+      backgroundImage: theme => ({
+        'home': "url('../img/background.svg')",
+      })
+    },
+    fontFamily: {
+      'poppins': ['Poppins', 'sans-serif'],
+    },
+
   },
   plugins: [],
 }
