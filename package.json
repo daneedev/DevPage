@@ -22,15 +22,18 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",
-    "dev": "ts-node-dev src/index.ts"
+    "dev": "ts-node-dev src/index.ts",
+    "cssbuild": "npx tailwindcss -i ./src/templates/css/input.css -o ./dist/css/style.css --minify"
   },
   "devDependencies": {
     "@types/node": "^22.10.5",
+    "@types/nunjucks": "^3.2.6",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.7.3"
   },
   "dependencies": {
     "inquirer": "^12.3.1",
+    "nunjucks": "^3.2.4",
     "tailwindcss": "^3.4.17"
   }
 }
