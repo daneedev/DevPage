@@ -1,12 +1,7 @@
 import fs from 'fs';
 import { execSync } from 'child_process';
 import nunjucks from 'nunjucks';
-
-interface SvgFile {
-    name: string;
-    shortcode: string;
-    icon: string;
-}
+import { Social, SvgFile } from './types';
 
 const langs : SvgFile[] = [
     {name: "JavaScript", shortcode: "js", icon: "js.svg"},
@@ -39,7 +34,7 @@ function generateBackground(colors: {color1: string, color2: string}) {
     console.log("Generating background...");
 }
 
-function generateWebsite(data: {username: string, job: string, languages: string, frameworks: string, about: string}) {
+function generateWebsite(data: {username: string, job: string, languages: string, frameworks: string, about: string}, socials: Social[]) {
     // CREATE DIRECTORIES
     fs.mkdirSync('dist', { recursive: true });
     fs.mkdirSync('dist/css', { recursive: true });
@@ -66,8 +61,9 @@ function generateWebsite(data: {username: string, job: string, languages: string
         }
     })
 
+
     // RENDER PAGE 
-    const index =  nunjucks.render('src/templates/index.html', { username: data.username, job: data.job, languages: userlangs, frameworks: userframeworks, about: data.about });
+    const index =  nunjucks.render('src/templates/index.html', { username: data.username, job: data.job, languages: userlangs, frameworks: userframeworks, about: data.about, socials: socials });
     fs.writeFileSync('dist/index.html', index);
     console.log("Rendering html...");
 }

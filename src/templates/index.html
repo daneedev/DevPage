@@ -49,6 +49,14 @@
                     </div>
                     {% endif %}
                 </section>
+                <div class="flex flex-col justify-center gap-5 space-x-2 bg-[#2d3237] p-[10px] rounded-2xl">
+                    <p class="text-[#8b8d90]">Socials</p>
+                    {% for social in socials %}
+                    <a href="{{ social.url }}" class="flex flex-row justify-center items-center gap-5">
+                        <p class="text-white font-bold">{{ social.name }}</p>
+                    </a>
+                    {% endfor %}
+                </div>
             </section>
         </article>
     </main>
