@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <script src="./js/tooltip.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body class="h-screen bg-home bg-cover flex flex-col justify-between font-poppins">
     <nav class="">
@@ -19,7 +19,7 @@
         </ul>
     </nav>
     <main class="flex flex-col justify-center items-center">
-        <article class="flex flex-col justify-center items-center bg-[#161b21] p-[20px] rounded-2xl max-w-[500px]">
+        <article class="flex flex-col justify-center items-center bg-[#161b21] p-[20px] rounded-2xl">
             <h1 class="text-4xl text-white font-bold">I'm {{ username }}</h1>
             <p class="text-gray-500">{{ job }}</p>
             <section class="flex flex-col justify-center items-center gap-5">
@@ -55,6 +55,28 @@
                     <a href="{{ social.url }}" class="flex flex-row justify-center items-center gap-5">
                         <p class="text-white font-bold">{{ social.name }}</p>
                     </a>
+                    {% endfor %}
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    {% for project in projects %}
+                    <div class="flex flex-col justify-between space-x-2 gap-5 bg-[#2d3237] p-[20px] rounded-2xl ">
+                        <div class="flex flex-row justify-between">
+                            <a class="text-white font-bold" href="https://github.com/{{ project.full_name }}">{{ project.full_name }}</a>
+                            <p class="text-[#8b8d90]"><i class="fa-solid fa-star text-yellow-500"></i>&nbsp;{{ project.stars }}&nbsp;<i class="fa-solid fa-code-fork"></i>&nbsp;{{ project.forks }}&nbsp;<i class="fa-solid fa-eye"></i>&nbsp;{{ project.watchers }}</p>
+                        </div>
+                        {% if project.description %}
+                            <p class="text-[#8b8d90] max-w-[300px]">{{ project.description }}</p>
+                        {% endif %}
+                        <div class="flex flex-row gap-5">
+                            <a href="https://github.com/{{ project.full_name }}" class="bg-[#8b8d90] text-white border border-[#8b8d90] p-[10px] rounded-md text-center hover:bg-transparent duration-300"><i class="fa-brands fa-github"></i>&nbsp;GitHub</a>
+                            {% if project.docs %}
+                            <a href="{{ project.docs }}" class="bg-[#8b8d90] text-white border border-[#8b8d90] p-[10px] rounded-md text-center hover:bg-transparent duration-300"><i class="fa-solid fa-book"></i>&nbsp;Docs</a>
+                            {% endif %}
+                            {% if project.demo %}
+                            <a href="{{ project.demo }}" class="bg-[#8b8d90] text-white border-[2px] border-[#8b8d90] p-[10px] rounded-md text-center hover:bg-transparent duration-300"><i class="fa-solid fa-eye"></i>&nbsp;Demo</a>
+                            {% endif %}
+                        </div>
+                    </div>
                     {% endfor %}
                 </div>
             </section>
