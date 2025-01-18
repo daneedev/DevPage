@@ -1,14 +1,14 @@
-import inquier from 'inquirer';
+import inquirer from 'inquirer';
 import { Social } from './types';
 
 async function getColors() : Promise<{color1: string, color2: string}> {
-  const color1 = await inquier.prompt({
+  const color1 = await inquirer.prompt({
     type: 'input',
     name: 'data',
     message: 'Theme colors: Enter the background color',
     default: '#05111a',
   })
-  const color2 = await inquier.prompt({
+  const color2 = await inquirer.prompt({
     type: 'input',
     name: 'data',
     message: 'Theme colors: Enter the secondary color',
@@ -22,7 +22,7 @@ async function getColors() : Promise<{color1: string, color2: string}> {
 }
 
 async function getUserInfo() {
-  const user = await inquier.prompt([{
+  const user = await inquirer.prompt([{
     type: 'input',
     name: 'username',
     message: 'User: Enter your username',
@@ -48,7 +48,7 @@ async function getUserInfo() {
     message: 'User: Enter a short description about yourself',
   }
 ])
- /* const job = await inquier.prompt({
+ /* const job = await inquirer.prompt({
     type: 'input',
     name: 'data',
     message: 'Enter your job title',
@@ -68,7 +68,7 @@ async function getUserSocials() {
   let moreLinks = true;
   let socials : Social[] = [];
   while (moreLinks) {
-    const social = await inquier.prompt([{
+    const social = await inquirer.prompt([{
       type: 'input',
       name: 'name',
       message: 'Socials: Enter the name of the social media platform (e.g. Twitter)',
@@ -93,4 +93,50 @@ async function getUserSocials() {
 
 }
 
-export default { getColors, getUserInfo, getUserSocials };
+async function getGitHubToken() {
+  const token = await inquirer.prompt({
+    type: 'input',
+    name: 'data',
+    message: 'GitHub: Enter your GitHub personal token',
+  })
+
+  return token.data;
+}
+
+async function selectRepositories(repos : any[]) {
+  const choices = repos.map(repo => ({
+    name: repo.full_name, // Zobrazí název repozitáře
+    value: repo.full_name, // Vrátí plné jméno
+  }));
+
+  const selected = await inquirer.prompt({
+    type: 'checkbox',
+    name: 'selectedRepos',
+    message: 'Select repositories to include:',
+    choices,
+  });
+
+  return repos.filter((repo) => selected.selectedRepos.includes(repo.full_name)) // Vrátí seznam vybraných repozitářů
+}
+
+async function addRepoInfo(repos: any[]) {
+  for (const repo of repos) {
+    const info = await inquirer.prompt([
+      {
+        type: 'input',
+        name: 'docs',
+        message: `Enter the documentation link for the ${repo.full_name} repository`,
+      },
+      {
+        type: 'input',
+        name: 'demo',
+        message: `Enter the demo link for the ${repo.full_name} repository`,
+      },
+    ])
+    repo.docs = info.docs;
+    repo.demo = info.demo;
+  }
+  return repos;
+}
+
+export default { getColors, getUserInfo, getUserSocials, getGitHubToken, selectRepositories, addRepoInfo };
