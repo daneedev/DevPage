@@ -10,20 +10,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-<body class="h-screen bg-home bg-cover flex flex-col justify-between font-poppins">
+<body class="h-full min-h-screen bg-home bg-cover flex flex-col justify-between font-poppins w-full">
     <nav class="">
-        <ul class="flex justify-center items-center bg-[#161b21] p-[10px] w-screen">
+        <ul class="flex justify-center items-center bg-[#161b21] p-[10px] w-full">
             <li class="mx-[10px]"><a href="#about" class="text-white">About</a></li>
             <li class="mx-[10px]"><a href="#projects" class="text-white">Projects</a></li>
-            <li class="mx-[10px]"><a href="#contact" class="text-white">Contact</a></li>
         </ul>
     </nav>
     <main class="flex flex-col justify-center items-center">
-        <article class="flex flex-col justify-center items-center bg-[#161b21] p-[20px] rounded-2xl">
+        <article class="flex flex-col justify-center items-center bg-[#161b21] p-[20px] my-[20px] rounded-2xl">
             <h1 class="text-4xl text-white font-bold">I'm {{ username }}</h1>
             <p class="text-gray-500">{{ job }}</p>
             <section class="flex flex-col justify-center items-center gap-5">
-                <div class="flex flex-col justify-center gap-5 space-x-2 bg-[#2d3237] p-[10px] rounded-2xl max-w-[500px]">
+                <div class="flex flex-col justify-center gap-5 space-x-2 bg-[#2d3237] p-[10px] rounded-2xl max-w-[500px]" id="about">
                     <p class="text-[#8b8d90]">About me</p>
                     <p class="text-white">{{ about }}</p>
                 </div>
@@ -57,7 +56,7 @@
                     </a>
                     {% endfor %}
                 </div>
-                <div class="grid grid-cols-2 gap-3">
+                <div class="grid grid-cols-2 gap-3" id="projects">
                     {% for project in projects %}
                     <div class="flex flex-col justify-between space-x-2 gap-5 bg-[#2d3237] p-[20px] rounded-2xl ">
                         <div class="flex flex-row justify-between">
@@ -82,7 +81,7 @@
             </section>
         </article>
     </main>
-    <footer class="flex flex-col items-center justify-center bg-[#161b21] p-[10px] w-screen text-white">
+    <footer class="flex flex-col items-center justify-center bg-[#161b21] p-[10px] w-full text-white">
         <p class="text-center">&copy; 2025 {{ username }} All rights reserved.</p>
         <p class="text-center">Made by <a class="font-bold" href="https://github.com/daneedev/DevPage">DevPage</a></p>
     </footer>
