@@ -1,11 +1,13 @@
 {
   "name": "devpage",
-  "version": "1.0.0",
+  "version": "1.0.0-beta.1",
   "description": "An static portfolio web generator",
   "keywords": [
     "devpage",
     "staticweb",
-    "portfolio"
+    "portfolio",
+    "cli",
+    "generator"
   ],
   "homepage": "https://github.com/daneedev/DevPage#readme",
   "bugs": {
@@ -15,15 +17,24 @@
     "type": "git",
     "url": "git+https://github.com/daneedev/DevPage.git"
   },
-  "license": "ISC",
+  "license": "GPL-3.0-only",
   "author": "Danee",
   "type": "commonjs",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "bin": {
+    "devpage": "./dist/index.js"
+  },
+  "files": [
+    "dist/",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && npm run copy-files && npm run cssbuild",
+    "copy-files": "copyfiles -u 1 \"src/**/*.{html,svg,css}\" dist",
     "start": "node dist/index.js",
     "dev": "ts-node-dev src/index.ts",
-    "cssbuild": "npx tailwindcss -i ./src/templates/css/input.css -o ./dist/css/style.css --minify"
+    "cssbuild": "npx tailwindcss -i ./src/templates/css/input.css -o ./dist/templates/css/style.css --minify"
   },
   "devDependencies": {
     "@types/node": "^22.10.5",
@@ -33,6 +44,8 @@
   },
   "dependencies": {
     "axios": "^1.7.9",
+    "copyfiles": "^2.4.1",
+    "devpage": "file:devpage-1.0.0-beta.1.tgz",
     "inquirer": "^12.3.1",
     "nunjucks": "^3.2.4",
     "tailwindcss": "^3.4.17"
