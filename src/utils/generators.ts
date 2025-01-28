@@ -29,15 +29,15 @@ function generateBackground(colors: {color1: string, color2: string}) {
     let background = fs.readFileSync('src/templates/img/background.svg', 'utf8');
     background = background.replace(/#05111a/g, colors.color1);
     background = background.replace(/#3586ff/g, colors.color2);
-    fs.mkdirSync('dist/img', { recursive: true });
-    fs.writeFileSync('dist/img/background.svg', background);
+    fs.mkdirSync('web/img', { recursive: true });
+    fs.writeFileSync('web/img/background.svg', background);
     console.log("Generating background...");
 }
 
 function generateWebsite(data: {username: string, job: string, languages: string, frameworks: string, about: string, pfp: string}, socials: Social[], projects: any[]) {
     // CREATE DIRECTORIES
-    fs.mkdirSync('dist', { recursive: true });
-    fs.mkdirSync('dist/css', { recursive: true });
+    fs.mkdirSync('web', { recursive: true });
+    fs.mkdirSync('web/css', { recursive: true });
     // GENERATE CSS
     console.log("Generating css...");
     execSync("npm run cssbuild")
@@ -47,16 +47,16 @@ function generateWebsite(data: {username: string, job: string, languages: string
     data.languages.split(', ').forEach((tech: string) => {
         const lang = langs.find((lang) => lang.shortcode === tech);
         if (lang) {
-            fs.mkdirSync('dist/img', { recursive: true });
-            fs.copyFileSync(`src/templates/img/${lang.icon}`, `dist/img/${lang.icon}`);
+            fs.mkdirSync('web/img', { recursive: true });
+            fs.copyFileSync(`src/templates/img/${lang.icon}`, `web/img/${lang.icon}`);
             userlangs.push({name: lang.name, shortcode: lang.shortcode, icon: `./img/${lang.icon}`});
         }
     })
     data.frameworks.split(', ').forEach((tech: string) => {
         const framework = frameworks.find((framework) => framework.shortcode === tech);
         if (framework) {
-            fs.mkdirSync('dist/img', { recursive: true });
-            fs.copyFileSync(`src/templates/img/${framework.icon}`, `dist/img/${framework.icon}`);
+            fs.mkdirSync('web/img', { recursive: true });
+            fs.copyFileSync(`src/templates/img/${framework.icon}`, `web/img/${framework.icon}`);
             userframeworks.push({name: framework.name, shortcode: framework.shortcode, icon: `./img/${framework.icon}`});
         }
     })
@@ -64,7 +64,7 @@ function generateWebsite(data: {username: string, job: string, languages: string
 
     // RENDER PAGE 
     const index =  nunjucks.render('src/templates/index.html', { username: data.username, job: data.job, languages: userlangs, frameworks: userframeworks, about: data.about, socials: socials, projects: projects, avatar: data.pfp });
-    fs.writeFileSync('dist/index.html', index);
+    fs.writeFileSync('web/index.html', index);
     console.log("Rendering html...");
 }
 
