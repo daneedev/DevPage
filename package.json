@@ -45,7 +45,6 @@
   "dependencies": {
     "axios": "^1.7.9",
     "copyfiles": "^2.4.1",
-    "devpage": "file:devpage-1.0.0-beta.1.tgz",
     "inquirer": "^12.3.1",
     "nunjucks": "^3.2.4",
     "tailwindcss": "^3.4.17"
