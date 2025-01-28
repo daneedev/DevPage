@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import prompts from './utils/prompts';
 import generators from './utils/generators';
 import api from './utils/api';
