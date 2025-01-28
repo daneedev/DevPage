@@ -29,6 +29,12 @@ async function getUserInfo() {
   },
   {
     type: 'input',
+    name: 'pfp',
+    message: 'User: Enter the link to your profile picture',
+    default: 'https://avatars.githubusercontent.com/daneedev'
+  },
+  {
+    type: 'input',
     name: 'job',
     message: 'User: Enter your job title',
   },
@@ -61,6 +67,7 @@ async function getUserInfo() {
     languages: user.languages,
     frameworks: user.frameworks,
     about: user.about,
+    pfp: user.pfp,
   }
 }
 
@@ -95,7 +102,7 @@ async function getUserSocials() {
 
 async function getGitHubToken() {
   const token = await inquirer.prompt({
-    type: 'input',
+    type: 'password',
     name: 'data',
     message: 'GitHub: Enter your GitHub personal token',
   })

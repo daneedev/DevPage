@@ -34,7 +34,7 @@ function generateBackground(colors: {color1: string, color2: string}) {
     console.log("Generating background...");
 }
 
-function generateWebsite(data: {username: string, job: string, languages: string, frameworks: string, about: string}, socials: Social[], projects: any[]) {
+function generateWebsite(data: {username: string, job: string, languages: string, frameworks: string, about: string, pfp: string}, socials: Social[], projects: any[]) {
     // CREATE DIRECTORIES
     fs.mkdirSync('dist', { recursive: true });
     fs.mkdirSync('dist/css', { recursive: true });
@@ -63,7 +63,7 @@ function generateWebsite(data: {username: string, job: string, languages: string
 
 
     // RENDER PAGE 
-    const index =  nunjucks.render('src/templates/index.html', { username: data.username, job: data.job, languages: userlangs, frameworks: userframeworks, about: data.about, socials: socials, projects: projects });
+    const index =  nunjucks.render('src/templates/index.html', { username: data.username, job: data.job, languages: userlangs, frameworks: userframeworks, about: data.about, socials: socials, projects: projects, avatar: data.pfp });
     fs.writeFileSync('dist/index.html', index);
     console.log("Rendering html...");
 }
