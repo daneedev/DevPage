@@ -105,6 +105,7 @@ async function getGitHubToken() {
     type: 'password',
     name: 'data',
     message: 'GitHub: Enter your GitHub personal token',
+    mask: '*',
   })
 
   return token.data;
