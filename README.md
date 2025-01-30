@@ -1,4 +1,18 @@
-# DevPage
+<h1 align="center"><img src=".github/img/devpage.png" width=175px></h1>
+
+<h3 align="center">DevPage</h3>
+<p align="center">
+   ⚒️ A CLI tool to generate a personal developer portfolio website.
+  <br>
+  <img alt="GitHub package.json dynamic" src="https://img.shields.io/github/package-json/version/daneedev/DevPage">
+  <img alt="NPM Downloads" src="https://img.shields.io/npm/dm/devpage">
+  <br>
+  <br>
+  <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=fff">
+  <img alt="HTML" src="https://img.shields.io/badge/HTML-%23E34F26.svg?logo=html5&logoColor=white">
+  <img alt="TailwindCSS" src="https://img.shields.io/badge/Tailwind%20CSS-%2338B2AC.svg?logo=tailwind-css&logoColor=white">
+  <img alt="NPM" src="https://img.shields.io/badge/npm-CB3837?logo=npm&logoColor=fff">
+</p>
 
 ## About
 DevPage is a CLI tool to generate a personal developer portfolio website. It uses templates and user-provided data to create a static website showcasing your skills, projects, and more.
