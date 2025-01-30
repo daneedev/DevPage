@@ -14,10 +14,10 @@
   <img alt="NPM" src="https://img.shields.io/badge/npm-CB3837?logo=npm&logoColor=fff">
 </p>
 
-## About
+## 📕 About
 DevPage is a CLI tool to generate a personal developer portfolio website. It uses templates and user-provided data to create a static website showcasing your skills, projects, and more.
 
-## Features
+## 🚦 Features
 - Generate a personal portfolio website
 - Customize with your own data
 - Supports multiple programming languages and frameworks
@@ -25,7 +25,7 @@ DevPage is a CLI tool to generate a personal developer portfolio website. It use
 - Uses TailwindCSS for styling
 - Uses GitHub API for user repositories info
 
-## Installation
+## 💨 Installation
 To install DevPage, use npm:
 
 ```bash
@@ -35,7 +35,7 @@ npm install devpage -g
 npm install devpage@dev -g
 ```
 
-## Usage
+## 🪴 Usage
 ```bash
 # Without NPX
 devpage
@@ -44,10 +44,14 @@ npx devpage
 ```
 You will be prompted to enter your details, such as your name, job title, programming languages, frameworks, and more.
 
-## Contributing
+## ✅ Supported inputs (langs, frameworks)
+All supported inputs are available on the [docs](https://docs.danee.dev/docs/devpage/inputs)
+
+
+## ⚒️ Contributing
 Contributions are welcome! Please open an issue or submit a pull request on GitHub.
 
-### License
+### ⚖️ License
 The project is licensed under **GPL-3.0**, which allows you to share, modify the original project. Any modified version must be under the same license to keep the project open-source and free to everyone! 
 - [More info here](https://www.gnu.org/licenses/gpl-3.0.html)
 
