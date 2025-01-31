@@ -3,8 +3,24 @@
 import prompts from './utils/prompts';
 import generators from './utils/generators';
 import api from './utils/api';
+import c from 'colors';
 
 async function main() {
+    console.log(c.blue(`
+ /$$$$$$$                    /$$$$$$$                           
+| $$__  $$                  | $$__  $$                          
+| $$  \\ $$ /$$$$$$ /$$    /$| $$  \\ $$/$$$$$$  /$$$$$$  /$$$$$$ 
+| $$  | $$/$$__  $|  $$  /$$| $$$$$$$|____  $$/$$__  $$/$$__  $$
+| $$  | $| $$$$$$$$\\  $$/$$/| $$____/ /$$$$$$| $$  \\ $| $$$$$$$$
+| $$  | $| $$_____/ \\  $$$/ | $$     /$$__  $| $$  | $| $$_____/
+| $$$$$$$|  $$$$$$$  \\  $/  | $$    |  $$$$$$|  $$$$$$|  $$$$$$$
+|_______/ \\_______/   \\_/   |__/     \\_______/\\____  $$\\_______/
+                                              /$$  \\ $$         
+                                             |  $$$$$$/         
+                                              \\______/                  
+       
+Made by Danee ©️ 2025
+                                              `))
     const userInfo = await prompts.getUserInfo();
     const socials = await prompts.getUserSocials();
 

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import logger from './logger'
 
 async function getUserRepositories(token : string) {
     try {
@@ -7,7 +8,7 @@ async function getUserRepositories(token : string) {
           Authorization: `Bearer ${token}`,
         },
         params: {
-          per_page: 100, // Maximum počet repozitářů na stránku
+          per_page: 100
         },
       });
   
@@ -18,10 +19,10 @@ async function getUserRepositories(token : string) {
         stars: repo.stargazers_count,
         forks: repo.forks_count,
         watchers: repo.watchers_count
-      })) // Vrátí seznam repozitářů
+      })) 
     } catch (error : any) {
-      console.error('Error fetching repositories:', error.message);
-      return [];
+      logger.logError("Invalid Github personal token")
+      process.exit(1)
     }
   }
 

@@ -3,6 +3,7 @@ import { execSync } from 'child_process';
 import nunjucks from 'nunjucks';
 import { Social, SvgFile } from './types';
 import path from 'path';
+import logger from './logger';
 
 
 const langs : SvgFile[] = [
@@ -38,7 +39,7 @@ function generateBackground(colors: {color1: string, color2: string}) {
     background = background.replace(/#3586ff/g, colors.color2);
     fs.mkdirSync(`${outputDir}/img`, { recursive: true });
     fs.writeFileSync(`${outputDir}/img/background.svg`, background);
-    console.log("Generating background...");
+    logger.logInfo("Generating background...");
 }
 
 function generateWebsite(data: {username: string, job: string, languages: string, frameworks: string, about: string, pfp: string}, socials: Social[], projects: any[]) {
@@ -70,7 +71,7 @@ function generateWebsite(data: {username: string, job: string, languages: string
     // RENDER PAGE 
     const index =  nunjucks.render("index.html", { username: data.username, job: data.job, languages: userlangs, frameworks: userframeworks, about: data.about, socials: socials, projects: projects, avatar: data.pfp });
     fs.writeFileSync(`${outputDir}/index.html`, index);
-    console.log("Rendering html...");
+    logger.logSuccess("Your website was successfully generated in web/ directory");
 }
 
 
