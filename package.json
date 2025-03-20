@@ -31,13 +31,10 @@
     ".github/img/"
   ],
   "scripts": {
-    "build": "tsc && npm run copy-files && npm run cssbuild",
+    "build": "tsc && npm run copy-files",
     "copy-files": "copyfiles -u 1 \"src/**/*.{html,svg,css}\" dist",
     "start": "node dist/index.js",
-    "dev": "ts-node-dev src/index.ts",
-    "cssbuild": "npx tailwindcss -i ./src/templates/css/input.css -o ./dist/templates/css/style.css --minify",
-    "cssdev": "npx tailwindcss -i ./src/templates/css/input.css -o ./src/templates/css/style.css --minify --watch"
-
+    "dev": "ts-node-dev src/index.ts"
   },
   "devDependencies": {
     "@types/node": "^22.10.5",
@@ -50,7 +47,6 @@
     "colors": "^1.4.0",
     "copyfiles": "^2.4.1",
     "inquirer": "^12.3.1",
-    "nunjucks": "^3.2.4",
-    "tailwindcss": "^3.4.17"
+    "nunjucks": "^3.2.4"
   }
 }
