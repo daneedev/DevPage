@@ -35,7 +35,9 @@
     "copy-files": "copyfiles -u 1 \"src/**/*.{html,svg,css}\" dist",
     "start": "node dist/index.js",
     "dev": "ts-node-dev src/index.ts",
-    "cssbuild": "npx tailwindcss -i ./src/templates/css/input.css -o ./dist/templates/css/style.css --minify"
+    "cssbuild": "npx tailwindcss -i ./src/templates/css/input.css -o ./dist/templates/css/style.css --minify",
+    "cssdev": "npx tailwindcss -i ./src/templates/css/input.css -o ./src/templates/css/style.css --minify --watch"
+
   },
   "devDependencies": {
     "@types/node": "^22.10.5",
