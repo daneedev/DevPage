@@ -1,89 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css"/>
-    <title>{{ username }}</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <meta charset="utf-8" />
+  <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-<body class="h-full min-h-screen bg-home bg-cover flex flex-col justify-between font-poppins w-full">
-    <main class="flex flex-col justify-center items-center">
-        <article class="flex flex-col justify-center items-center bg-[#161b21] p-[20px] my-[20px] rounded-2xl">
-            <section class="flex flex-row items-center justify-center gap-5">
-                <img src="{{ avatar }}" class="w-[40px] h-[40px] rounded-full" alt="{{ username }}" title="{{ username }}" />
-                <h1 class="text-4xl text-white font-bold">I'm {{ username }}</h1>
+
+<body>
+  <!-- Swiper -->
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <article class="slide-container">
+            <section class="avatar-container">
+                <img src="https://avatars.githubusercontent.com/daneedev" class="avatar" alt="{{ username }}" title="{{ username }}" />
+                <h1 class="intro-text">I am {{ username }}</h1>
             </section>
-            <p class="text-gray-500">{{ job }}</p>
-            <section class="flex flex-col justify-center items-center gap-5">
-                <div class="flex flex-col justify-center gap-5 space-x-2 bg-[#2d3237] p-[10px] rounded-2xl max-w-[500px]" id="about">
-                    <p class="text-[#8b8d90]">About me</p>
-                    <p class="text-white">{{ about }}</p>
-                </div>
-                <section class="flex flex-row justify-center items-center gap-5">
-                    {% if languages.length >= 1 %}
-                    <div class="flex flex-col justify-center gap-5 space-x-2 bg-[#2d3237] p-[10px] rounded-2xl">
-                        <p class="text-[#8b8d90]">Languages</p>
-                        <div class="flex flex-row justify-center items-center gap-5 flex-wrap">
-                            {% for tech in languages %}
-                            <img src="{{ tech.icon }}" class="w-8 h-8" alt={{ tech.name }} title={{ tech.name }} />
-                            {% endfor %}
-                        </div>
-                    </div>
-                    {% endif %}
-                    {% if frameworks.length >= 1 %}
-                    <div class="flex flex-col justify-center gap-5 space-x-2 bg-[#2d3237] p-[10px] rounded-2xl">
-                        <p class="text-[#8b8d90]">Frameworks</p>
-                        <div class="flex flex-row justify-center items-center gap-5 flex-wrap">
-                            {% for tech in frameworks %}
-                            <img src="{{ tech.icon }}" class="w-8 h-8" alt={{ tech.name }} title={{ tech.name }} />
-                            {% endfor %}
-                        </div>
-                    </div>
-                    {% endif %}
-                </section>
-                <div class="flex flex-col justify-center gap-5 space-x-2 bg-[#2d3237] p-[10px] rounded-2xl">
-                    <p class="text-[#8b8d90]">Socials</p>
-                    <div class="flex flex-row justify-center items-center gap-5">
-                        {% for social in socials %}
-                        <a href="{{ social.url }}" class="flex flex-row justify-center items-center gap-5">
-                            <p class="text-white font-bold">{{ social.name }}</p>
-                        </a>
-                        {% endfor %}
-                    </div>
-                </div>
-                <div class="grid grid-cols-2 gap-3" id="projects">
-                    {% for project in projects %}
-                    <div class="flex flex-col justify-between space-x-2 gap-5 bg-[#2d3237] p-[20px] rounded-2xl ">
-                        <div class="flex flex-row justify-between">
-                            <a class="text-white font-bold" href="https://github.com/{{ project.full_name }}">{{ project.full_name }}</a>
-                            <p class="text-[#8b8d90]"><i class="fa-solid fa-star text-yellow-500"></i>&nbsp;{{ project.stars }}&nbsp;<i class="fa-solid fa-code-fork"></i>&nbsp;{{ project.forks }}&nbsp;<i class="fa-solid fa-eye"></i>&nbsp;{{ project.watchers }}</p>
-                        </div>
-                        {% if project.description %}
-                            <p class="text-[#8b8d90] max-w-[300px]">{{ project.description }}</p>
-                        {% endif %}
-                        <div class="flex flex-row gap-5">
-                            <a href="https://github.com/{{ project.full_name }}" class="bg-[#8b8d90] text-white border border-[#8b8d90] p-[10px] rounded-md text-center hover:bg-transparent duration-300"><i class="fa-brands fa-github"></i>&nbsp;GitHub</a>
-                            {% if project.docs %}
-                            <a href="{{ project.docs }}" class="bg-[#8b8d90] text-white border border-[#8b8d90] p-[10px] rounded-md text-center hover:bg-transparent duration-300"><i class="fa-solid fa-book"></i>&nbsp;Docs</a>
-                            {% endif %}
-                            {% if project.demo %}
-                            <a href="{{ project.demo }}" class="bg-[#8b8d90] text-white border-[2px] border-[#8b8d90] p-[10px] rounded-md text-center hover:bg-transparent duration-300"><i class="fa-solid fa-eye"></i>&nbsp;Demo</a>
-                            {% endif %}
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
+            <p class="intro-description">{{ job }}</p>
+        </article>
+      </div>
+      <div class="swiper-slide" id="about">
+        <article class="slide-container about">
+            <h1 class="slide-title">About me</h1>
+            <p class="about-text">{{ about }}</p>
+        </article>
+      </div>
+      <div class="swiper-slide" id="tech-stack">
+        <article class="slide-container about">
+            <h1 class="slide-title">Tech Stack</h1>
+            {% if languages.length >= 1 %}
+            <h2 class="slide-subtitle">Languages</h2>
+            <section class="icon-container">
+              {% for tech in languages %}
+                <img src={{ tech.icon }} data-tippy-content={{ tech.name }} class="icon" alt={{ tech.name }} />
+              {% endfor %}
+            </section>
+            {% endif %}
+            {% if frameworks.length >= 1 %}
+            <h2 class="slide-subtitle">Frameworks</h2>
+            <section class="icon-container">
+              {% for tech in frameworks %}
+                <img src={{ tech.icon }} data-tippy-content={{ tech.name }} class="icon" alt={{ tech.name }} />
+              {% endfor %}
+            </section>
+            {% endif %}
+        </article>
+      </div>
+      <div class="swiper-slide" id="socials">
+        <article class="slide-container about">
+            <h1 class="slide-title">Socials</h1>
+            <section class="socials-container">
+              {% for social in socials %}
+                <a href={{ social.url }} class="social-link">{{ social.name }}</a>
+              {% endfor %}
             </section>
         </article>
-    </main>
-    <footer class="flex flex-col items-center justify-center bg-[#161b21] p-[10px] w-full text-white">
-        <p class="text-center">&copy; 2025 {{ username }} All rights reserved.</p>
-        <p class="text-center">Made by <a class="font-bold" href="https://github.com/daneedev/DevPage">DevPage</a></p>
-    </footer>
-
+      </div>
+      <div class="swiper-slide" id="projects">
+        <article class="slide-container about">
+            <h1 class="slide-title">Projects</h1>
+            <section class="projects-container">
+              {% for project in projects %}
+              <div class="project-card">
+                <div class="project-header">
+                  <p class="project-title">{{ project.full_name }}</h2>
+                  <p class="project-stats"><i class="fa-solid fa-star yellow"></i>&nbsp;{{ project.stars }}&nbsp;<i class="fa-solid fa-code-fork"></i>&nbsp;{{ project.forks }}&nbsp;<i class="fa-solid fa-eye"></i>&nbsp;{{ project.watchers }}</p>
+                </div>
+                {% if project.description %}
+                <p class="project-description">{{ project.description }}</p>
+                <div class="project-footer">
+                  <a href="https://github.com/{{ project.full_name }}" class="project-link"><i class="fa-brands fa-github"></i>&nbsp;GitHub</a>
+                  {% if project.docs %}
+                  <a href={{ project.docs }} class="project-link"><i class="fa-solid fa-book"></i>&nbsp;Docs</a>
+                  {% endif %}
+                  {% if project.demo %}
+                  <a href={{ project.demo }} class="project-link"><i class="fa-solid fa-eye"></i>&nbsp;Demo</a>
+                  {% endif %}
+                </div>
+              </div>
+              {% endfor %}
+            </section>
+        </article>
+      </div>
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+  <footer>
+    <section class="footer-container">
+      <p class="footer-text">© 2025 {{ username }} All rights reserved</p>
+    </section>
+    <section class="footer-container">
+      <p class="footer-text">Made with <a target="_blank" href="https://github.com/daneedev/DevPage">DevPage</a></p>
+    </section>
+  </footer>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+    <script type="module" src="./js/swiper.js"></script>
+    <script type="module" src="./js/tippy.js"></script>
 </body>
 </html>
