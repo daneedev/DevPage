@@ -1,0 +1,3 @@
+tippy('img', {
+  content: ''
+});
