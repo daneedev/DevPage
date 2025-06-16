@@ -37,7 +37,7 @@
     "dev": "ts-node-dev src/index.ts"
   },
   "devDependencies": {
-    "@types/node": "^22.10.5",
+    "@types/node": "^24.0.3",
     "@types/nunjucks": "^3.2.6",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.7.3"
